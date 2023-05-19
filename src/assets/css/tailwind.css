@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Material Icons';
+  src: url("/fonts/MaterialIcons-Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Material Icons Outlined';
+  src: url("/fonts/MaterialIconsOutlined-Regular.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Material Icons Round';
+  src: url("/fonts/MaterialIconsRound-Regular.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Material Icons Sharp';
+  src: url("/fonts/MaterialIconsSharp-Regular.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Material Icons Two Tone';
+  src: url("/fonts/MaterialIconsTwoTone-Regular.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Comfortaa';
+  src: url("/fonts/Comfortaa-VariableFont.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  src: url("/fonts/Inter-VariableFont.ttf") format('truetype');
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1;
+}
+h1 {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
