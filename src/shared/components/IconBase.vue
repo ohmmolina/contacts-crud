@@ -1,17 +1,15 @@
 <script setup lang="ts">
+import type { MaterialIcon, MaterialIconVariant, Color, Size } from '../types'
+
 defineProps<{
-  icon: 'person'
-  variant?: 'outlined' | 'round' | 'sharp' | 'two-tone'
-  size?: 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'
-  color?: string
+  icon: MaterialIcon
+  variant?: MaterialIconVariant
+  size?: Size
+  color?: Color
 }>()
 </script>
 <template>
-  <span
-    :class="`font-mi${variant ? `-${variant}` : ''} text-${color ?? 'blue-500'} text-${
-      size ?? 'md'
-    }`"
-  >
+  <span :class="`font-mi${variant ? `-${variant}` : ''}`" class="align-top icon">
     {{ icon }}
   </span>
 </template>
