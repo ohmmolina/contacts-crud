@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core'
 import { RouterView } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useThemeStore } from '@/shared/stores'
+const { theme } = storeToRefs(useThemeStore())
 </script>
 
 <template>
-  <div :class="useDark() ? 'dark' : ''">
+  <div :class="theme">
     <RouterView />
   </div>
 </template>
