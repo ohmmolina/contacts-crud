@@ -2,6 +2,8 @@
 
 _Made by ohmmolina_
 
+_Hosted with aws [here](https://main.d3iu0owrkpc0ig.amplifyapp.com/)_
+
 ### Contacts CRUD Example with Vue, Tailwind and Typescript
 
 ### Testing with Vitest for Unit Testing and Cypress for End-End
