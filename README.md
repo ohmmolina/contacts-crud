@@ -2,7 +2,7 @@
 
 _Made by ohmmolina_
 
-_Hosted with aws [here](https://main.d3iu0owrkpc0ig.amplifyapp.com/)_
+_Hosted with AWS Amplify in <a href="https://www.ohmmolina.dev" target="_blank">ohmmolina.dev</a>_
 
 ### Contacts CRUD Example with Vue, Tailwind and Typescript
 
