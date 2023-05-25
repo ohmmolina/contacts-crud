@@ -23,7 +23,6 @@ let defaultSlot: VNode<RendererNode, RendererElement, { [key: string]: unknown }
   undefined
 if (slots.default) {
   defaultSlot = slots.default()[0]
-  console.log(defaultSlot)
 }
 
 if (!props.text && !props.icon && !defaultSlot) {
@@ -36,11 +35,12 @@ if (props.variant === 'icon' && !props.icon) {
 const buttonClasses = computed(() => {
   const classes = []
   if (props.variant === 'icon') {
-    classes.push('btn-icon')
+    if (props.size) classes.push(`btn-icon-${props.size}`)
+    else classes.push('btn-icon')
     classes.push(`btn-${props.color}`)
   } else {
     if (props.size) classes.push(`btn-${props.size}`)
-    else classes.push('btn')
+    classes.push('btn')
     classes.push(`btn-${props.color}` + (props.variant ? `-${props.variant}` : ''))
   }
   return classes.join(' ')
@@ -51,7 +51,7 @@ const iconClasses = computed(() => {
 })
 </script>
 <template>
-  <button :class="buttonClasses" @click="$emit('click')">
+  <button :class="buttonClasses" :disabled="disabled" @click.prevent="$emit('click')">
     <Icon
       v-if="icon"
       :class="iconClasses"
@@ -83,9 +83,20 @@ const iconClasses = computed(() => {
 .btn-lg span {
   @apply pr-3;
 }
+
 .btn-icon {
-  @apply p-3 rounded-full;
+  @apply h-8 w-8 rounded-full;
 }
+.btn-icon-sm {
+  @apply p-2 h-4 w-4 rounded-full;
+}
+.btn-icon-lg {
+  @apply h-12 w-12 rounded-full text-center text-2xl;
+}
+.btn-icon-2xl {
+  @apply h-24 w-24 rounded-full text-center text-5xl;
+}
+
 .btn-primary {
   @apply bg-primary text-primary-on transition-all
   dark:bg-primary-dark dark:text-primary-dark-on

@@ -1,4 +1,4 @@
-export * from './api'
+export * from './responses'
 
 export type Color = 'primary' | 'secondary' | 'tertiary'
 export type Size =

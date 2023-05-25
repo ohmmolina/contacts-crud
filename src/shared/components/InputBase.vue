@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type Events } from 'vue'
 import type { Color, Size, MaterialIcon } from '../types'
 import Icon from './IconBase.vue'
 
 const props = defineProps<{
+  type?: 'text' | 'number' | 'email' | 'tel' | 'password'
   label: string
   variant: 'outlined'
   color: Color
@@ -11,10 +12,11 @@ const props = defineProps<{
   iconLead?: MaterialIcon
   iconTrail?: MaterialIcon
   hint?: string
+  max?: number | string
   hasError?: boolean
 }>()
-defineEmits(['icon-trail-click'])
-const modelValue = defineModel<string>()
+defineEmits(['icon-trail-click', 'input'])
+const modelValue = defineModel<string | number>()
 
 const inputClasses = computed(() => {
   const classes = []
@@ -39,13 +41,15 @@ const labelClasses = computed(() => {
 const iconTrailComputed = computed(() => (props.hasError ? 'error' : props.iconTrail ?? 'cancel'))
 </script>
 <template>
-  <div class="input-group my-3">
+  <div class="input-group" :class="variant === 'outlined' ? 'bg-inherit' : 'bg-transparent'">
     <input
       v-model="modelValue"
-      type="text"
+      :type="type ?? 'text'"
+      :maxlength="max"
       class="peer"
       :class="inputClasses"
       placeholder="placeholder necesary for the floating label to work"
+      @input="$emit('input', $event.target.value)"
     />
     <label :class="labelClasses">{{ label }}</label>
     <Icon v-if="iconLead" :icon="iconLead" class="input-icon-lead cursor-default" />
@@ -81,17 +85,17 @@ const iconTrailComputed = computed(() => (props.hasError ? 'error' : props.iconT
 }
 
 .input-outlined {
-  @apply bg-backgroud border border-outline rounded-md py-2.5 text-surface-on-variant placeholder-transparent
+  @apply bg-inherit border border-outline rounded-md py-2.5 text-surface-on-variant placeholder-transparent
   disabled:border-surface-on/38 disabled:text-surface-on/38
-  dark:bg-backgroud-dark dark:border-outline-dark dark:text-surface-dark-on
+  dark:bg-inherit dark:border-outline-dark dark:text-surface-dark-on
   dark:disabled:border-surface-dark-on/38 dark:disabled:text-surface-dark-on/38;
 }
 .input-label-outlined {
-  @apply absolute -top-1.5 mb-1 px-1 text-surface-on-variant text-xs font-medium transition-all bg-backgroud
+  @apply absolute -top-1.5 mb-1 px-1 text-surface-on-variant text-xs font-medium transition-all bg-inherit
   peer-placeholder-shown:top-2 peer-placeholder-shown:p-0
   peer-placeholder-shown:text-base peer-focus:-top-1.5 peer-focus:px-1 peer-focus:text-xs
   peer-disabled:text-surface-on/38
-  dark:text-surface-dark-on dark:bg-backgroud-dark dark:peer-disabled:text-surface-dark-on/38;
+  dark:text-surface-dark-on dark:bg-inherit dark:peer-disabled:text-surface-dark-on/38;
 }
 
 .input-primary {
@@ -99,6 +103,7 @@ const iconTrailComputed = computed(() => (props.hasError ? 'error' : props.iconT
   dark:focus:outline-primary-dark dark:[&+.change-sibling]:focus:text-primary-dark;
 }
 .input-error {
-  @apply focus:outline-error border-error [&+.change-sibling]:text-error;
+  @apply focus:outline-error border-error [&+.change-sibling]:text-error
+  dark:focus:outline-error-dark dark:border-error-dark dark:[&+.change-sibling]:text-error-dark;
 }
 </style>

@@ -33,14 +33,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1;
-  @apply bg-backgroud text-backgroud-on dark:bg-backgroud-dark dark:text-backgroud-dark-on;
+  @apply bg-background text-background-on dark:bg-background-dark dark:text-background-dark-on;
 }
 h1 {
   font-family: 'Comfortaa', cursive;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1.2;
 }

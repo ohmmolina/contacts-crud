@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      inherit: 'inherit',
       primary: {
         container: '#EADDFF',
         DEFAULT: '#6750A4',
@@ -55,7 +56,7 @@ module.exports = {
           'on-container': '#F9DEDC'
         }
       },
-      backgroud: {
+      background: {
         on: '#1C1B1F',
         DEFAULT: '#FFFBFE',
         dark: {
@@ -90,6 +91,7 @@ module.exports = {
       92: '.92', //hover
       88: '.88', //focus
       84: '.84', //drag
+      46: '.46', //backdrop
       38: '.38', //disable
       16: '.16',
       12: '.12',
@@ -105,6 +107,11 @@ module.exports = {
         'mi-two-tone': ['Material Icons Two Tone', 'serif'],
         comfortaa: ['Comfortaa', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif']
+      },
+      screens: {
+        '2xl': '1536px',
+        '3xl': '1920px',
+        '4xl': '2560px'
       }
     }
   },
